@@ -5,7 +5,7 @@
 -export([encode/2, decode/2, supports/1]).
 
 -define(int32, 1/big-signed-unit:32).
--define(datetime, (get(datetime_mod))).
+-define(datetime, (pgsql_datetime:mod())).
 
 encode(_Any, null)                          -> <<-1:?int32>>;
 encode(bool, true)                          -> <<1:?int32, 1:1/big-signed-unit:8>>;

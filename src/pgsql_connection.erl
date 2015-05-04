@@ -205,8 +205,8 @@ initializing({$Z, <<Status:8>>}, State) ->
     erase(username),
     erase(password),
     case lists:keysearch(<<"integer_datetimes">>, 1, Parameters) of
-        {value, {_, <<"on">>}}  -> put(datetime_mod, pgsql_idatetime);
-        {value, {_, <<"off">>}} -> put(datetime_mod, pgsql_fdatetime)
+        {value, {_, <<"on">>}}  -> pgsql_datetime:mod(true);
+        {value, {_, <<"off">>}} -> pgsql_datetime:mod(false)
     end,
     gen_fsm:reply(Reply_To, {ok, self()}),
     {next_state, ready, State#state{txstatus = Status}}.
