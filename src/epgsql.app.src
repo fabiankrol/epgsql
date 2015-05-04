@@ -6,4 +6,9 @@
              pgsql_sock, pgsql_types]},
   {registered, []},
   {applications, [kernel, stdlib, crypto, ssl]},
-  {included_applications, []}]}.
+  {included_applications, []},
+  {env, [
+         {integer_datetimes_mod, pgsql_idatetime},
+         {non_integer_datetimes_mod, pgsql_fdatetime}
+        ]}
+ ]}.
